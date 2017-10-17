@@ -1,7 +1,7 @@
 #include "board.h"
 
 Board::Board()
-    : m_board(15, std::vector<Cell>(15, Cell('x')))
+    : m_board(30, std::vector<Cell>(30, Cell('x')))
 {
 
 }
@@ -52,6 +52,23 @@ int Board::numNeighbors(int xindex, int yindex) const
     {
         neighbors++;
     }
+    if(getNeighbor(xindex - 1, yindex - 1))
+    {
+        neighbors++;
+    }
+    if(getNeighbor(xindex + 1, yindex + 1))
+    {
+        neighbors++;
+    }
+    if(getNeighbor(xindex - 1, yindex + 1))
+    {
+        neighbors++;
+    }
+    if(getNeighbor(xindex + 1, yindex - 1))
+    {
+        neighbors++;
+    }
+
     return neighbors;
 }
 
@@ -63,7 +80,7 @@ bool Board::livesOrDies(int xindex, int yindex) const //returns true if status o
     {
         return true;
     }
-    else if(!cell.isAlive() && neighbors > 2)
+    else if(!cell.isAlive() && neighbors == 3)
     {
         return true;
     }
