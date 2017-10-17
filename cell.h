@@ -1,6 +1,8 @@
 #ifndef CELL_H
 #define CELL_H
 
+#include <iostream>
+
 class Cell
 {
 private:
@@ -8,7 +10,9 @@ private:
 public:
     Cell(char status);
     void toggleStatus();
-
+    bool isAlive() const;
+    char getStatus() const;
+    friend std::ostream& operator<<(std::ostream &out, const Cell &cell);
 };
 
 #endif
