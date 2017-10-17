@@ -53,3 +53,21 @@ int Board::numNeighbors(int xindex, int yindex) const
     }
     return neighbors;
 }
+
+bool Board::livesOrDies(int xindex, int yindex) const
+{
+    Cell cell(m_board[yindex][xindex]);
+    int neighbors = this->numNeighbors(xindex, yindex);
+    if(cell.isAlive() && (neighbors > 3 || neighbors < 2))
+    {
+        return false;
+    }
+    else if(!cell.isAlive() && neighbors < 3)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}

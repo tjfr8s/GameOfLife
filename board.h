@@ -13,6 +13,7 @@ public:
     void printBoard() const;
     bool getNeighbor(int xindex, int yindex) const;  //returns true if top neighbor is living
     int numNeighbors(int xindex, int yindex) const;
+    bool livesOrDies(int xindex, int yindex) const;
 };
 
 #endif

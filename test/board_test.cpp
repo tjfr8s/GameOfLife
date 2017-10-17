@@ -3,7 +3,7 @@
 #include "../cell.h"
 #include "../board.h"
 
-// void playGame();
+
 
 int main()
 {
@@ -14,8 +14,3 @@ int main()
     std::cout << myBoard.numNeighbors(13, 0) << std::endl;
     return 0;
 }
-
-// void playGame()
-// {
-//     Board myBoard
-// }
