@@ -11,6 +11,8 @@ public:
     Board();
     std::vector< std::vector <Cell> > m_board;
     void printBoard() const;
+    bool getNeighbor(int xindex, int yindex) const;  //returns true if top neighbor is living
+    int numNeighbors(int xindex, int yindex) const;
 };
 
 #endif
