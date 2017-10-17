@@ -12,6 +12,8 @@ public:
     void toggleStatus();
     bool isAlive() const;
     char getStatus() const;
+    void kill();
+    void revive();
     friend std::ostream& operator<<(std::ostream &out, const Cell &cell);
 };
 

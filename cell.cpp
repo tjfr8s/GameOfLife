@@ -38,6 +38,16 @@ char Cell::getStatus() const
     return m_status;
 }
 
+void Cell::kill()
+{
+    m_status = 'x';
+}
+
+void Cell::revive()
+{
+    m_status = 'o';
+}
+
 std::ostream& operator<<(std::ostream &out, const Cell &cell)
 {
     out << cell.getStatus();

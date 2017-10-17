@@ -21,10 +21,11 @@ void Board::printBoard() const
 
 bool Board::getNeighbor(int xindex, int yindex) const
 {
-    if((xindex >= 0 && xindex <= m_board.size()) &&
-       (yindex >= 0 && yindex <= m_board.size()))
+    if((xindex >= 0 && xindex < m_board.size()) &&
+       (yindex >= 0 && yindex < m_board.size()))
     {
-        return m_board[yindex][xindex].isAlive();
+        bool neighbor = m_board[yindex][xindex].isAlive();
+        return neighbor;
     }
     else
     {
@@ -54,20 +55,20 @@ int Board::numNeighbors(int xindex, int yindex) const
     return neighbors;
 }
 
-bool Board::livesOrDies(int xindex, int yindex) const
+bool Board::livesOrDies(int xindex, int yindex) const //returns true if status of cell will change next generation.
 {
     Cell cell(m_board[yindex][xindex]);
-    int neighbors = this->numNeighbors(xindex, yindex);
+    int neighbors = numNeighbors(xindex, yindex);
     if(cell.isAlive() && (neighbors > 3 || neighbors < 2))
     {
-        return false;
+        return true;
     }
-    else if(!cell.isAlive() && neighbors < 3)
+    else if(!cell.isAlive() && neighbors > 2)
     {
-        return false;
+        return true;
     }
     else
     {
-        return true;
+        return false;
     }
 }
